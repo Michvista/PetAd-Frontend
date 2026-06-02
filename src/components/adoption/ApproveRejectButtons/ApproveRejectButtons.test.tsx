@@ -27,7 +27,7 @@ describe('ApproveRejectButtons', () => {
     vi.clearAllMocks();
 
     mockUseRoleGuard.mockReturnValue({
-      role: 'admin',
+      role: 'ADMIN',
       isAdmin: true,
       isUser: false,
       hasAccess: vi.fn().mockReturnValue(true),
@@ -35,7 +35,7 @@ describe('ApproveRejectButtons', () => {
 
     mockUseAdoptionApprovals.mockReturnValue({
       hasDecided: false,
-      requiredRoles: ['admin'],
+      requiredRoles: ['ADMIN'],
       mutateApprovalDecision: mockMutateApprovalDecision,
       isPending: false,
     });
@@ -48,7 +48,7 @@ describe('ApproveRejectButtons', () => {
     it('does NOT render when user already decided', () => {
       mockUseAdoptionApprovals.mockReturnValue({
         hasDecided: true,
-        requiredRoles: ['admin'],
+        requiredRoles: ['ADMIN'],
         mutateApprovalDecision: mockMutateApprovalDecision,
         isPending: false,
       });
@@ -59,7 +59,7 @@ describe('ApproveRejectButtons', () => {
 
     it('does NOT render when user role not in requiredRoles', () => {
       mockUseRoleGuard.mockReturnValue({
-        role: 'user',
+        role: 'USER',
         isAdmin: false,
         isUser: true,
         hasAccess: vi.fn().mockReturnValue(false),
@@ -118,7 +118,7 @@ describe('ApproveRejectButtons', () => {
     it('Buttons disabled during loading and Spinner visible when isPending === true', () => {
       mockUseAdoptionApprovals.mockReturnValue({
         hasDecided: false,
-        requiredRoles: ['admin'],
+        requiredRoles: ['ADMIN'],
         mutateApprovalDecision: mockMutateApprovalDecision,
         isPending: true,
       });

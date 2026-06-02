@@ -54,7 +54,7 @@ describe("SettlementFailureState", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockUseRoleGuard.mockReturnValue({
-      role: "user",
+      role: "USER",
       isAdmin: false,
       isUser: true,
       hasAccess: vi.fn().mockReturnValue(false),
@@ -80,7 +80,7 @@ describe("SettlementFailureState", () => {
 
   it("hides the retry button for non-admin users", () => {
     mockUseRoleGuard.mockReturnValue({
-      role: "user",
+      role: "USER",
       isAdmin: false,
       isUser: true,
       hasAccess: vi.fn().mockReturnValue(false),
@@ -91,7 +91,7 @@ describe("SettlementFailureState", () => {
 
   it("shows the retry button for admin users", () => {
     mockUseRoleGuard.mockReturnValue({
-      role: "admin",
+      role: "ADMIN",
       isAdmin: true,
       isUser: false,
       hasAccess: vi.fn().mockReturnValue(true),
@@ -102,7 +102,7 @@ describe("SettlementFailureState", () => {
 
   it("shows the confirmation modal when admin clicks retry, before mutation fires", () => {
     mockUseRoleGuard.mockReturnValue({
-      role: "admin",
+      role: "ADMIN",
       isAdmin: true,
       isUser: false,
       hasAccess: vi.fn().mockReturnValue(true),
@@ -121,7 +121,7 @@ describe("SettlementFailureState", () => {
 
   it("closes the confirmation modal when cancel is clicked without calling mutation", () => {
     mockUseRoleGuard.mockReturnValue({
-      role: "admin",
+      role: "ADMIN",
       isAdmin: true,
       isUser: false,
       hasAccess: vi.fn().mockReturnValue(true),
@@ -140,7 +140,7 @@ describe("SettlementFailureState", () => {
 
   it("calls retrySettlement with the correct escrowId after confirming", async () => {
     mockUseRoleGuard.mockReturnValue({
-      role: "admin",
+      role: "ADMIN",
       isAdmin: true,
       isUser: false,
       hasAccess: vi.fn().mockReturnValue(true),
@@ -158,7 +158,7 @@ describe("SettlementFailureState", () => {
 
   it("shows a spinner on the confirm button while the retry is in progress", async () => {
     mockUseRoleGuard.mockReturnValue({
-      role: "admin",
+      role: "ADMIN",
       isAdmin: true,
       isUser: false,
       hasAccess: vi.fn().mockReturnValue(true),
@@ -189,7 +189,7 @@ describe("SettlementFailureState", () => {
 
   it("shows a success toast after a successful retry", async () => {
     mockUseRoleGuard.mockReturnValue({
-      role: "admin",
+      role: "ADMIN",
       isAdmin: true,
       isUser: false,
       hasAccess: vi.fn().mockReturnValue(true),
@@ -212,7 +212,7 @@ describe("SettlementFailureState", () => {
 
   it("shows an error toast when the retry fails", async () => {
     mockUseRoleGuard.mockReturnValue({
-      role: "admin",
+      role: "ADMIN",
       isAdmin: true,
       isUser: false,
       hasAccess: vi.fn().mockReturnValue(true),
@@ -237,7 +237,7 @@ describe("SettlementFailureState", () => {
 
   it("calls the onRetry prop after a successful retry", async () => {
     mockUseRoleGuard.mockReturnValue({
-      role: "admin",
+      role: "ADMIN",
       isAdmin: true,
       isUser: false,
       hasAccess: vi.fn().mockReturnValue(true),

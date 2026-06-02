@@ -23,7 +23,7 @@ beforeEach(() => {
 
   // must include all fields useRoleGuard returns: role, isAdmin, isUser
   vi.mocked(useRoleGuard).mockReturnValue({
-    role: "admin",
+    role: "ADMIN",
     isAdmin: true,
     isUser: false,
     hasAccess: vi.fn().mockReturnValue(true),
@@ -47,7 +47,7 @@ const defaultProps = {
 describe("CompleteAdoptionButton", () => {
   it("is hidden for non-admins", () => {
     vi.mocked(useRoleGuard).mockReturnValue({
-      role: "user",
+      role: "USER",
       isAdmin: false,
       isUser: true,
       hasAccess: vi.fn().mockReturnValue(false),
